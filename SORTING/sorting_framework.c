@@ -7,6 +7,7 @@
 void input(int [], int);
 void output(int [], int);
 void* xcalloc(int, int);
+void test_sorting(int[], int);
 
 int main(int argv, char *args[]) {
 
@@ -21,8 +22,14 @@ int main(int argv, char *args[]) {
     srand(time());
 
     input(arr, num_of_elements);
+
     insertion_sort(arr, num_of_elements);
+    test_sorting(arr, num_of_elements);
     output(arr, num_of_elements);
+
+    free(arr);
+
+    exit(EXIT_SUCCESS);
 }
 
 void input(int arr[], int num_of_elements) {
@@ -46,6 +53,16 @@ void* xcalloc(int instances, int size) {
     if(m_blocks == NULL) {
         fprintf(stderr, "Out of memory \n");
         exit(EXIT_FAILURE);
+    }
+}
+
+void test_sorting(int arr[], int size) {
+    int i;
+    for(i=1; i < size; i++) {
+        if(arr[i-1] > arr[i]) {
+            fprintf(stderr, "Sorting algorithm has failed ;), wrong key %d at %d position", arr[i], i);
+            exit(EXIT_FAILURE);
+        }
     }
 }
 
