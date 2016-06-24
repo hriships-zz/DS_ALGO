@@ -4,10 +4,13 @@
 
 #define VALID_ARGUMENTS 2
 
-void input(int [], int);
-void output(int [], int);
+/*aux functions*/
 void* xcalloc(int, int);
+
+/*framework functions*/
+void input(int [], int);
 void test_sorting(int[], int);
+void output(int [], int);
 
 int main(int argv, char *args[]) {
 
