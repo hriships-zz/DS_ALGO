@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "sorting.h"
+#include <time.h>
+#include <sorting.h>
 
 #define VALID_ARGUMENTS 2
 
@@ -22,7 +23,7 @@ int main(int argv, char *args[]) {
     int num_of_elements = atoi(args[1]);
     int* arr;
     arr = xcalloc(num_of_elements, sizeof(int));
-    srand(time());
+    srand(time(NULL));
 
     input(arr, num_of_elements);
 
@@ -35,27 +36,22 @@ int main(int argv, char *args[]) {
     exit(EXIT_SUCCESS);
 }
 
+void* xcalloc(int instances, int size) {
+    void* m_blocks;
+    m_blocks = calloc(instances, size);
+   
+    if(m_blocks == NULL) {
+        fprintf(stderr, "Out of memory \n");
+        exit(EXIT_FAILURE);
+    }
+
+    return m_blocks;
+}
+
 void input(int arr[], int num_of_elements) {
     int i;
     for(i=0; i < num_of_elements; i++) {
         arr[i] = rand();    
-    }
-}
-
-void output(int arr[], int num_of_elements) {
-    int i;
-    for(i=0; i < num_of_elements; i++) {
-        printf("arr[%d] = %d \n", i, arr[i]);
-    }
-}
-
-void* xcalloc(int instances, int size) {
-    void* m_blocks;
-    m_blocks = calloc(instances, size);
-    
-    if(m_blocks == NULL) {
-        fprintf(stderr, "Out of memory \n");
-        exit(EXIT_FAILURE);
     }
 }
 
@@ -69,3 +65,9 @@ void test_sorting(int arr[], int size) {
     }
 }
 
+void output(int arr[], int num_of_elements) {
+    int i;
+    for(i=0; i < num_of_elements; i++) {
+        printf("arr[%d] = %d \n", i, arr[i]);
+    }
+}
