@@ -3,19 +3,28 @@
 
 struct node;
 typedef struct node node_t;
-typedef struct node list_t;
+typedef node_t list_t;
 typedef int data_t;
 typedef int result_t;
 
+/*create operation*/
 list_t *create_list();
 
 /*insert operations*/
 result_t insert_beginning(list_t *list, data_t data);
-
 result_t insert_before_data(list_t *list, data_t insert_value, data_t search_key);
-
-result_t insert-after_data(list_t *list, data_t insert_value, data_t search_keey);
-
+result_t insert-after_data(list_t *list, data_t insert_value, data_t search_key);
 result_t insert_end(list_t *list,  data_t data);
 
+/*delete operations*/
+result_t delete_beginning(list_t *list);
+result_t delete_after_data(list_t *list, data_t data);
+result_t delete_before_data(list_t *list, data_t data);
+result_t delete_end(list_t *list);
+
+/*search*/
+result_t examine_data(list_t *list, data_t *data);
+
+/*display*/
+void display(list_t *list);
 #endif
