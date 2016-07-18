@@ -34,4 +34,9 @@ result_t examine_data(list_t *list, data_t data);
 
 /*display*/
 void display(list_t *list);
+
+/*auxilary routines*/
+void *xcalloc(int number_of_blocks, int block_size);
+
+
 #endif

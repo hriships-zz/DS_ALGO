@@ -1,9 +1,12 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
 #include"list.h"
 
 int main(int argv, char *args[]) {
     list_t *list;
     list = create_list();
+    assert(list != NULL);
 
     /*insert_beginning(list, 10);
     insert-after_data(list, 10, 20);
@@ -20,5 +23,5 @@ int main(int argv, char *args[]) {
         printf("data not found [%d]", data);
     }*/
     
-
+    return (EXIT_SUCCESS);
 }
