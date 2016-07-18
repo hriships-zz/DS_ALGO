@@ -7,13 +7,20 @@ typedef node_t list_t;
 typedef int data_t;
 typedef int result_t;
 
+struct node {
+    data_t data;
+    node_t *next;
+}; 
+
+#define DATA_FOUND 1
+
 /*create operation*/
 list_t *create_list();
 
 /*insert operations*/
 result_t insert_beginning(list_t *list, data_t data);
 result_t insert_before_data(list_t *list, data_t insert_value, data_t search_key);
-result_t insert-after_data(list_t *list, data_t insert_value, data_t search_key);
+result_t insert_after_data(list_t *list, data_t insert_value, data_t search_key);
 result_t insert_end(list_t *list,  data_t data);
 
 /*delete operations*/
@@ -23,7 +30,7 @@ result_t delete_before_data(list_t *list, data_t data);
 result_t delete_end(list_t *list);
 
 /*search*/
-result_t examine_data(list_t *list, data_t *data);
+result_t examine_data(list_t *list, data_t data);
 
 /*display*/
 void display(list_t *list);
