@@ -3,11 +3,11 @@
 #include "list.h"
 
 list_t *create_list() {
-    return get_node();
+    return get_new_node();
 }
 
 result_t insert_beginning(list_t *list, data_t data) {
-    node_t *node = get_node();
+    node_t *node = get_new_node();
     node -> data = data;
 
     node_t *run = list -> next;
