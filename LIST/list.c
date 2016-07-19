@@ -3,14 +3,11 @@
 #include "list.h"
 
 list_t *create_list() {
-    list_t *list = NULL;
-    list = (node_t*) xcalloc(1, sizeof(node_t));
-
-    return list;
+    return get_node();
 }
 
 result_t insert_beginning(list_t *list, data_t data) {
-    node_t *node = (node_t*) xcalloc(1, sizeof(node_t));
+    node_t *node = get_node();
     node -> data = data;
 
     node_t *run = list -> next;

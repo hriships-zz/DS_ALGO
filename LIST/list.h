@@ -40,6 +40,9 @@ result_t search(list_t *list, data_t data);
 /*display*/
 void display(list_t *list);
 
+/*list aux function*/
+node_t *get_new_node();
+
 /*auxilary routines*/
 void *xcalloc(int number_of_blocks, int block_size);
 
