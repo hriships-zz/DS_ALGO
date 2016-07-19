@@ -8,8 +8,12 @@ int main(int argv, char *args[]) {
     list = create_list();
     assert(list != NULL);
 
-    /*insert_beginning(list, 10);
-    insert-after_data(list, 10, 20);
+    insert_beginning(list, 10);
+    result_t result = search(list, 10);
+    printf("Result :: %d\n", result);
+    assert(result == DATA_FOUND);
+
+    /*insert-after_data(list, 10, 20);
     insert_before_data(list, 20, 30);
     insert_end(list, 40);
 

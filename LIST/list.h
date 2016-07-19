@@ -13,6 +13,10 @@ struct node {
 }; 
 
 #define DATA_FOUND 1
+#define DATA_NOT_FOUND 2
+
+#define SUCCESS 0;
+#define FAILURE -1;
 
 /*create operation*/
 list_t *create_list();
@@ -31,6 +35,7 @@ result_t delete_end(list_t *list);
 
 /*search*/
 result_t examine_data(list_t *list, data_t data);
+result_t search(list_t *list, data_t data);
 
 /*display*/
 void display(list_t *list);
