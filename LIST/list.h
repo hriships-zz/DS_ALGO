@@ -41,7 +41,7 @@ result_t search(list_t *list, data_t data);
 void display(list_t *list);
 
 /*list aux function*/
-node_t *get_new_node();
+node_t *get_new_node(data_t data);
 
 /*auxilary routines*/
 void *xcalloc(int number_of_blocks, int block_size);

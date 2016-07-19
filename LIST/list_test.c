@@ -10,7 +10,7 @@ int main(int argv, char *args[]) {
 
     insert_beginning(list, 10);
     result_t result = search(list, 10);
-    printf("Result :: %d\n", result);
+    display(list);
     assert(result == DATA_FOUND);
 
     insert_before_data(list, 20, 10);
@@ -18,6 +18,15 @@ int main(int argv, char *args[]) {
 	result = search(list, 20);
 	assert(result == DATA_FOUND);
 
+    insert_after_data(list, 30, 20);
+    display(list);
+    result = search(list, 30);
+    assert(result == DATA_FOUND);
+
+    insert_end(list, 40);
+    display(list);
+    result = search(list, 40);
+    assert(result == DATA_FOUND);
     /*insert_before_data(list, 20, 30);
     insert_end(list, 40);
 	
