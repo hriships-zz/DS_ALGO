@@ -13,11 +13,14 @@ int main(int argv, char *args[]) {
     printf("Result :: %d\n", result);
     assert(result == DATA_FOUND);
 
-    /*insert-after_data(list, 10, 20);
-    insert_before_data(list, 20, 30);
-    insert_end(list, 40);
+    insert_before_data(list, 20, 10);
+	display(list);
+	result = search(list, 20);
+	assert(result == DATA_FOUND);
 
-    display(list);
+    /*insert_before_data(list, 20, 30);
+    insert_end(list, 40);
+	
     
     data_t data = 20;
     result_t result = examine_data(list, data);
