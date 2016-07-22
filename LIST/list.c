@@ -17,15 +17,15 @@ result_t insert_beginning(list_t *list, data_t data) {
 
 result_t insert_before_data(list_t* list, data_t data, data_t search_key) {
     result_t result;
-	node_t *target_node = search_previous_node(list, search_key);
+    node_t *target_node = search_previous_node(list, search_key);
 
     if(target_node != NULL) {
-	    node_t *new_node = get_new_node(data);
+        node_t *new_node = get_new_node(data);
         place_node(target_node, new_node);
-		result = SUCCESS;
+        result = SUCCESS;
     } else {
         result = FAILURE;
-	}
+    }
 
 	return result;
 } 
