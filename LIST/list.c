@@ -8,62 +8,86 @@ list_t *create_list() {
 
 result_t insert_beginning(list_t *list, data_t data) {
     node_t *new_node = get_new_node(data);
-
     node_t *run = list;
 
-    new_node -> next = run -> next;
-    run -> next = new_node;
+    place_node(run, new_node);
+
     return SUCCESS;
 }
 
 result_t insert_before_data(list_t* list, data_t data, data_t search_key) {
-	node_t *run = list;
-	
-	while(run->next != NULL) {
-		if(run -> next -> data == search_key) {
-			node_t *new_node = get_new_node(data);
-           
-			new_node -> next = run->next;
-            run -> next = new_node;
+    result_t result;
+	node_t *target_node = search_previous_node(list, search_key);
 
-			return SUCCESS;
-		}
-
-		run = run -> next;
+    if(target_node != NULL) {
+	    node_t *new_node = get_new_node(data);
+        place_node(target_node, new_node);
+		result = SUCCESS;
+    } else {
+        result = FAILURE;
 	}
 
-	return FAILURE;
+	return result;
 } 
 
 result_t insert_after_data(list_t *list, data_t insert_value, data_t search_key) {
-    node_t *run = list -> next;
+    result_t result;
+    node_t *target_node = search_node(list, search_key);
 
-    while(run != NULL) {
-        if(run -> data == search_key) {
-            node_t * new_node = get_new_node(insert_value);
-
-            new_node -> next = run -> next;
-            run -> next = new_node;
-
-            return SUCCESS;
-        }
+    if(target_node != NULL) {
+        node_t * new_node = get_new_node(insert_value);
+        place_node(target_node, new_node);
+        result = SUCCESS;
+    } else {
+        result = FAILURE;
     }
 
-    return FAILURE;
+    return result;
 }
 
 result_t insert_end(list_t *list, data_t data) {
-    node_t *run = list -> next;
-    while(run -> next != NULL) {
-        run = run-> next;
-    }
+    result_t result;
+    node_t *end_node = get_end_node(list);
     
-    node_t *new_node = get_new_node(data);
+    if(end_node != NULL) {
+        node_t *new_node = get_new_node(data);
+        place_node(end_node, new_node);
+        result = SUCCESS;
+    } else {
+        result = FAILURE;
+    }
 
-    new_node -> next = run -> next;
-    run -> next = new_node;
+    return result;
+}
+
+result_t delete_beginning(list_t *list) {
+    delete_node(list, list -> next);
 
     return SUCCESS;
+}
+
+result_t delete_data(list_t *list, data_t data) {
+    
+    node_t *node = search_node(list, data);
+
+    if(node != NULL) {
+        delete_node(list, node);
+        return SUCCESS;
+    } else {
+        return FAILURE;
+    }
+}
+
+result_t delete_end(list_t *list) {
+    
+    node_t *end_node = get_end_node(list);
+    
+    if(end_node != NULL) {
+        delete_node(list, end_node);
+        return SUCCESS;
+    } else {
+        return FAILURE;
+    }
 }
 
 void display(list_t *list) {
@@ -79,7 +103,7 @@ void display(list_t *list) {
 }
  
 result_t search(list_t *list, data_t data) {
-    node_t *run = list -> next;
+    node_t *run = list;
     while(run != NULL) {
         if(run -> data == data) {
             return (DATA_FOUND);

@@ -27,17 +27,21 @@ int main(int argv, char *args[]) {
     display(list);
     result = search(list, 40);
     assert(result == DATA_FOUND);
-    /*insert_before_data(list, 20, 30);
-    insert_end(list, 40);
-	
-    
-    data_t data = 20;
-    result_t result = examine_data(list, data);
-    if(result == DATA_FOUND) {
-        printf("data found : [%d]", data);
-    } else {
-        printf("data not found [%d]", data);
-    }*/
-    
+   
+    delete_beginning(list);
+    display(list);
+    result = search(list, 20);
+    assert(result == DATA_NOT_FOUND);
+
+    delete_data(list, 10);
+    display(list);
+    result = search(list, 10);
+    assert(result == DATA_NOT_FOUND);
+
+    delete_end(list);
+    display(list); 
+    result = search(list, 40);
+    assert(result == DATA_NOT_FOUND);
+
     return (EXIT_SUCCESS);
 }
