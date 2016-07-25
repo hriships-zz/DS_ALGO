@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<signal.h>
 #include "list.h"
+#include "common.h"
 
 node_t* get_new_node(data_t data) {
     node_t *node = (node_t*) xcalloc(1, sizeof(node_t));

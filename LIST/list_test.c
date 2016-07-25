@@ -14,9 +14,9 @@ int main(int argv, char *args[]) {
     assert(result == DATA_FOUND);
 
     insert_before_data(list, 20, 10);
-	display(list);
-	result = search(list, 20);
-	assert(result == DATA_FOUND);
+    display(list);
+    result = search(list, 20);
+    assert(result == DATA_FOUND);
 
     insert_after_data(list, 30, 20);
     display(list);

@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "list.h"
+#include "list_aux.h"
 
 list_t *create_list() {
     return get_new_node(0);

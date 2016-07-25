@@ -9,5 +9,4 @@ void *xcalloc(int number_of_blocks, int block_size) {
     }
 
     return memory_blocks;
-
 }
