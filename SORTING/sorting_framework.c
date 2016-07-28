@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <time.h>
-#include <sorting.h>
+#include<time.h>
+#include "sorting.h"
+#include<assert.h>
 
 #define VALID_ARGUMENTS 2
 
@@ -27,7 +28,8 @@ int main(int argv, char *args[]) {
 
     input(arr, num_of_elements);
 
-    insertion_sort(arr, num_of_elements);
+    //insertion_sort(arr, num_of_elements);
+    heap_sort(arr, num_of_elements);
     test_sorting(arr, num_of_elements);
     output(arr, num_of_elements);
 
@@ -58,10 +60,7 @@ void input(int arr[], int num_of_elements) {
 void test_sorting(int arr[], int size) {
     int i;
     for(i=1; i < size; i++) {
-        if(arr[i-1] > arr[i]) {
-            fprintf(stderr, "Sorting algorithm has failed ;), wrong key %d at %d position", arr[i], i);
-            exit(EXIT_FAILURE);
-        }
+        assert(arr[i-1] < arr[i]);
     }
 }
 
