@@ -27,11 +27,10 @@ int main(int argv, char *args[]) {
     srand(time(NULL));
 
     input(arr, num_of_elements);
-
     //insertion_sort(arr, num_of_elements);
     heap_sort(arr, num_of_elements);
-    test_sorting(arr, num_of_elements);
     output(arr, num_of_elements);
+    test_sorting(arr, num_of_elements);
 
     free(arr);
 
