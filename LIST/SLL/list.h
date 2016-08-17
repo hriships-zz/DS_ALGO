@@ -22,8 +22,8 @@ typedef int len_t;
 list_t *create_list();
 
 // Insertion
-result_t insert_begin(list_t *list, data_t data);
-result_t insert_end(list_t *list, data_t data);
+result_t insert_at_begin(list_t *list, data_t data);
+result_t insert_at_end(list_t *list, data_t data);
 result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key);
 result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key);
 

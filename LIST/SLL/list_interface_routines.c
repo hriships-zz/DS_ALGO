@@ -9,7 +9,7 @@ list_t *create_list()
 	return (list_t*) xcalloc(1, sizeof(list_t));
 }
 
-result_t insert_begin(list_t *list, data_t data)
+result_t insert_at_begin(list_t *list, data_t data)
 {
 	node_t *new_node = get_new_node(data);
 	node_t *run = list;
@@ -18,38 +18,18 @@ result_t insert_begin(list_t *list, data_t data)
 	return (SUCCESS);
 }
 
-result_t insert_end(list_t *list, data_t data)
+result_t insert_at_end(list_t *list, data_t data)
 {
-	node_t *new_node = (node_t*) calloc(1, sizeof(node_t));
-	new_node -> data = data;
-
-	node_t *run = list;
-	while(run -> next != NULL) 
-	{
-		run = run -> next;
-	}
-
-
-	run -> next = new_node;
+	node_t *new_node = get_new_node(data);
+	node_t *last_node = get_last_node(list);
+	link_nodes(last_node, new_node);
 
 	return (SUCCESS);
 }
 
 result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key)
 {
-	node_t *run = list;
-	node_t *target = NULL;
-
-	while(run ->next != NULL) 
-	{
-		if(run -> next -> data == search_key) 
-		{
-			target = run;
-			break;
-		} 
-
-		run = run -> next;
-	}
+	node_t *target = serch_back_node(list, search_key);
 
 	if(target == NULL) 
 	{
@@ -57,30 +37,15 @@ result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key)
 	} 
 	else 
 	{
-		node_t *new_node = (node_t*) calloc(1, sizeof(node_t));
-		new_node -> data = insert_key;
-
-		new_node -> next = target -> next;
-		target -> next = new_node;
-
+		node_t *new_node = get_new_node(insert_key);
+		link_nodes(target, new_node);
 		return (SUCCESS);
 	}
 }
 
 result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
 {
-	node_t *run = list -> next;
-	node_t *target = NULL;
-
-	while(run != NULL) 
-	{
-		if(run -> data == search_key) {
-			target = run;
-			break;
-		}
-
-		run = run -> next;
-	}
+	node_t *target = serch_node(list, search_key);
 
 	if(target == NULL) 
 	{
@@ -88,12 +53,8 @@ result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
 	}
 	else 
 	{
-		node_t *new_node = (node_t*) calloc(1, sizeof(node_t));
-		new_node -> data = insert_key;
-
-		new_node -> next = target -> next;
-		target -> next = new_node;
-
+		node_t *new_node = get_new_node(insert_key);
+		link_nodes(target, new_node);
 		return (SUCCESS);
 	}
 }
@@ -115,19 +76,16 @@ result_t is_at_begining(list_t *list, data_t data)
 
 result_t is_before(list_t *list, data_t search_key, data_t next_key)
 {
-	node_t *run = list -> next;
+	node_t *target = serch_node(list, search_key);
 
-	while(run -> next != NULL) 
+	if(target != NULL && (target -> next == NULL || target -> next -> data == next_key)) 
 	{
-		if(run -> data == search_key && run -> next -> data == next_key)
-		{
-			return (TRUE);
-		}
-
-		run = run -> next;
+		return (TRUE);
 	}
-
-	return (FALSE);
+	else 
+	{
+		return (FALSE);		
+	}
 }
 
 result_t find(list_t *list, data_t data)
@@ -135,29 +93,22 @@ result_t find(list_t *list, data_t data)
 
 result_t is_after(list_t *list, data_t search_key, data_t after_data)
 {
-	node_t *run = list -> next;
+	node_t *target = serch_node(list, after_data);
 
-	while(run -> next != NULL) 
+	if(target != NULL && (target -> next != NULL || target -> next -> data == search_key))
 	{
-		if(run -> next -> data == search_key && run -> data == after_data) {
-			return (TRUE);
-		}
-
-		run = run -> next;
+		return (TRUE);
 	}
-
-	return (FALSE);
+	else
+	{
+		return (FALSE);
+	}
 }
 
 result_t is_at_end(list_t *list, data_t data)
 {
-	node_t *run = list;
-	while(run -> next != NULL) 
-	{
-		run = run -> next;
-	}
-
-	return  run -> data == data ? TRUE : FALSE;
+	node_t *target = get_last_node(list);
+	return  target -> data == data ? TRUE : FALSE;
 }
 
 result_t examine_del_beg(list_t *list, data_t *p_object)

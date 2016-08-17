@@ -11,10 +11,10 @@ int main() {
 
 	result_t result;
 
-	result = insert_begin(list, 10);
+	result = insert_at_begin(list, 10);
 	assert(result == SUCCESS && is_at_begining(list, 10) == TRUE);
 
-	result = insert_end(list, 40);
+	result = insert_at_end(list, 40);
 	assert(result == SUCCESS && is_at_end(list, 40) == TRUE);
 
 	result = insert_before_data(list, 40, 30);

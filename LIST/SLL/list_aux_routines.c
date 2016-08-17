@@ -26,3 +26,48 @@ void link_nodes(node_t *target, node_t *new_node)
 	new_node -> next = target -> next;
 	target -> next = new_node;
 }
+
+node_t *serch_node(list_t *list, data_t data) 
+{
+	node_t *run = list -> next;
+
+	while(run != NULL)
+	{
+		if(run -> data == data)
+		{
+			return run;
+		} 
+		run = run -> next;
+	}
+
+	return NULL;
+}
+
+node_t *serch_back_node(list_t *list, data_t data)
+{
+	node_t *run = list;
+
+	while(run -> next != NULL)
+	{
+		if(run -> next -> data == data) 
+		{
+			return run;
+		}
+		run = run -> next;
+	}
+
+	return NULL;
+}
+
+node_t *get_last_node(list_t *list)
+{
+	node_t *run = list;
+
+	while(run -> next != NULL) 
+	{
+		run = run -> next;
+	}
+
+	return run;
+
+}
