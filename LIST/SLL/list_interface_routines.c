@@ -1,28 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "sll.h"
 #include "list.h"
+#include "sll.h"
+#include "list_aux.h"
 
 list_t *create_list() 
 {
-	list_t *list = (list_t*) calloc(1, sizeof(list_t));
-	
-	if(list == NULL) 
-	{
-		fprintf(stderr, "OUT OF MEMMORY");
-	}
-
-	return list;
+	return (list_t*) xcalloc(1, sizeof(list_t));
 }
 
 result_t insert_begin(list_t *list, data_t data)
 {
-	node_t *node = (node_t*) calloc(1, sizeof(node_t));
-	node -> data = data;
-
+	node_t *new_node = get_new_node(data);
 	node_t *run = list;
-	node -> next = run -> next;
-	run -> next = node;
+	link_nodes(run, new_node);
 
 	return (SUCCESS);
 }
