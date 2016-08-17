@@ -29,6 +29,12 @@ int main() {
 	result = insert_after_data(list, 40, 50);
 	assert(result == SUCCESS && is_after(list, 50, 40) == TRUE);
 
+	result = insert_after_data(list, 5, 8);
+	assert(result == SUCCESS && is_after(list, 8, 5) == TRUE);
+
+	result = insert_after_data(list, 35, 45);
+	assert(result == ERROR && is_after(list, 45, 35) == FALSE);
+
 	exit (EXIT_SUCCESS);
 }
 
