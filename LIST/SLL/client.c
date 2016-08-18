@@ -35,6 +35,25 @@ int main() {
 	result = insert_after_data(list, 35, 45);
 	assert(result == ERROR && is_after(list, 45, 35) == FALSE);
 
+	result = delete_begin(list);
+	assert(result == SUCCESS && is_at_begining(list, 8) == TRUE);
+
+	print_list(list);
+	result = delete_data(list, 50);
+	assert(result == SUCCESS);
+
+	result = delete_data(list, 8);
+	assert(result == SUCCESS);
+
+	result = delete_data(list, 80);
+	assert(result == ERROR);
+
+	print_list(list);
+	result = delete_end(list);
+	assert(result == ERROR);
+
+	
+
 	exit (EXIT_SUCCESS);
 }
 

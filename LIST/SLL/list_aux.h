@@ -11,5 +11,6 @@ void link_nodes(node_t *target, node_t *new_node);
 node_t *serch_node(list_t *list, data_t data);
 node_t *serch_back_node(list_t *list, data_t data);
 node_t *get_last_node(list_t *list);
+node_t *get_second_last_node(list_t *list);
 
 #endif

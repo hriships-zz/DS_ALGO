@@ -60,13 +60,37 @@ result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
 }
 
 result_t delete_begin(list_t *list)
-{return ERROR;}
+{
+	node_t *temp = list -> next;
+	list -> next = temp -> next;
+	free(temp);
+
+	return (SUCCESS);
+}
 
 result_t delete_data(list_t *list, data_t data)
-{return ERROR;}
+{
+	node_t *target = serch_back_node(list, data);
+
+	if(target == NULL)
+	{
+		return (ERROR);	
+	}
+	else
+	{
+		node_t *temp = target -> next;
+		target -> next = temp -> next;
+		free(temp);
+		return (SUCCESS);
+	}
+}
 
 result_t delete_end(list_t *list)
-{return ERROR;}
+{
+	node_t *node = get_second_last_node(list);
+	printf("%u %u\n", (*node) -> data, node);
+	return ERROR;
+}
 
 result_t is_at_begining(list_t *list, data_t data)
 {
@@ -112,7 +136,9 @@ result_t is_at_end(list_t *list, data_t data)
 }
 
 result_t examine_del_beg(list_t *list, data_t *p_object)
-{return ERROR;}
+{
+	return ERROR;
+}
 
 result_t examine_del_end(list_t *list, data_t *p_object)
 {return ERROR;}
