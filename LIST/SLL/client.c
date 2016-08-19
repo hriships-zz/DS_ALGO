@@ -38,7 +38,6 @@ int main() {
 	result = delete_begin(list);
 	assert(result == SUCCESS && is_at_begining(list, 8) == TRUE);
 
-	print_list(list);
 	result = delete_data(list, 50);
 	assert(result == SUCCESS);
 
@@ -47,12 +46,9 @@ int main() {
 
 	result = delete_data(list, 80);
 	assert(result == ERROR);
-
-	print_list(list);
-	result = delete_end(list);
-	assert(result == ERROR);
-
 	
+	result = delete_end(list);
+	assert(result == SUCCESS && is_at_end(list, 40) == FALSE);	
 
 	exit (EXIT_SUCCESS);
 }

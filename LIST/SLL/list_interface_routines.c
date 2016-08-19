@@ -87,9 +87,19 @@ result_t delete_data(list_t *list, data_t data)
 
 result_t delete_end(list_t *list)
 {
-	node_t *node = get_second_last_node(list);
-	printf("%u %u\n", (*node) -> data, node);
-	return ERROR;
+	node_t *target_back = get_second_last_node(list);
+	if(target_back == NULL) 
+	{
+		return (ERROR);	
+	}
+	else 
+	{
+		node_t *temp = target_back -> next;
+		target_back -> next = temp -> next;
+		free(temp);
+		return (SUCCESS);
+	}
+	
 }
 
 result_t is_at_begining(list_t *list, data_t data)

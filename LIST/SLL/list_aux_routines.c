@@ -77,10 +77,9 @@ node_t *get_second_last_node(list_t *list)
 
 	while(run != NULL && (*run) -> next != NULL) 
 	{
-		printf("Node: %d %u\n", (*run) -> data, run);
 		run = &(*run) -> next;
 	}
-
-	printf("%u %u\n", (run), (run) - sizeof(data_t));
-	return (node_t*) (run - sizeof(data_t));
+	run = (node_t**)(run - sizeof(data_t));
+		
+	return (*run);
 }
