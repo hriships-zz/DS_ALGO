@@ -27,6 +27,12 @@ void link_nodes(node_t *target, node_t *new_node)
 	target -> next = new_node;
 }
 
+void unlink_nodes(node_t *target, node_t *remove_node)
+{
+	target -> next = remove_node -> next;
+	free(remove_node);
+}
+
 node_t *serch_node(list_t *list, data_t data) 
 {
 	node_t *run = list -> next;

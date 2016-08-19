@@ -36,19 +36,19 @@ int main() {
 	assert(result == ERROR && is_after(list, 45, 35) == FALSE);
 
 	result = delete_begin(list);
-	assert(result == SUCCESS && is_at_begining(list, 8) == TRUE);
+	assert(result == SUCCESS && is_at_begining(list, 5) == FALSE);
 
 	result = delete_data(list, 50);
-	assert(result == SUCCESS);
+	assert(result == SUCCESS && find(list, 50) == FALSE);
 
 	result = delete_data(list, 8);
-	assert(result == SUCCESS);
+	assert(result == SUCCESS && find(list, 8) == FALSE);
 
 	result = delete_data(list, 80);
 	assert(result == ERROR);
 	
 	result = delete_end(list);
-	assert(result == SUCCESS && is_at_end(list, 40) == FALSE);	
+	assert(result == SUCCESS && is_at_end(list, 40) == FALSE);
 
 	exit (EXIT_SUCCESS);
 }

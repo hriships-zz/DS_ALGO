@@ -61,17 +61,24 @@ result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
 
 result_t delete_begin(list_t *list)
 {
-	node_t *temp = list -> next;
-	list -> next = temp -> next;
-	free(temp);
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+
+	unlink_nodes(list, list -> next);
 
 	return (SUCCESS);
 }
 
 result_t delete_data(list_t *list, data_t data)
 {
-	node_t *target = serch_back_node(list, data);
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
 
+	node_t *target = serch_back_node(list, data);
 	if(target == NULL)
 	{
 		return (ERROR);	
@@ -79,14 +86,18 @@ result_t delete_data(list_t *list, data_t data)
 	else
 	{
 		node_t *temp = target -> next;
-		target -> next = temp -> next;
-		free(temp);
+		unlink_nodes(target, temp);
 		return (SUCCESS);
 	}
 }
 
 result_t delete_end(list_t *list)
 {
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+
 	node_t *target_back = get_second_last_node(list);
 	if(target_back == NULL) 
 	{
@@ -95,8 +106,7 @@ result_t delete_end(list_t *list)
 	else 
 	{
 		node_t *temp = target_back -> next;
-		target_back -> next = temp -> next;
-		free(temp);
+		unlink_nodes(target_back, temp);
 		return (SUCCESS);
 	}
 	
@@ -123,7 +133,21 @@ result_t is_before(list_t *list, data_t search_key, data_t next_key)
 }
 
 result_t find(list_t *list, data_t data)
-{return FALSE;}
+{
+	node_t *run = list -> next;
+
+	while(run != NULL)
+	{
+		if(run -> data == data)
+		{
+			return (TRUE);
+		}
+
+		run = run -> next;
+	}
+
+	return (FALSE);
+}
 
 result_t is_after(list_t *list, data_t search_key, data_t after_data)
 {
@@ -154,7 +178,16 @@ result_t examine_del_end(list_t *list, data_t *p_object)
 {return ERROR;}
 
 result_t is_empty(list_t *list)
-{return ERROR;}
+{
+	if(list -> next == NULL)
+	{
+		return (TRUE);
+	}
+	else
+	{
+		return (FALSE);
+	}
+}
 
 void print_list(list_t *list)
 {
