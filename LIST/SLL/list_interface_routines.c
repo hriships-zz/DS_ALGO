@@ -193,7 +193,7 @@ result_t examine_del_end(list_t *list, data_t *p_object)
 
 result_t is_empty(list_t *list)
 {
-	if(list -> next == NULL)
+	if(list == NULL || list -> next == NULL)
 	{
 		return (TRUE);
 	}
@@ -219,4 +219,36 @@ result_t sort(list_t *list)
 {return ERROR;}
 
 len_t length(list_t *list)
-{return ERROR;}
+{
+	int len = 0;
+	if(is_empty(list) == TRUE)
+	{
+		return len;
+	} 
+
+	node_t *run = list -> next;
+
+	while(run != NULL)
+	{
+		run = run -> next;
+		len ++;
+	}
+
+	return (len);
+}
+
+result_t distroy(list_t **list)
+{
+	node_t *run = *list, *n_run;
+
+	while(run != NULL)
+	{
+		n_run = run -> next;
+		run = run -> next;
+		free(n_run);
+	}
+
+	list = NULL;
+
+	return (SUCCESS);
+}

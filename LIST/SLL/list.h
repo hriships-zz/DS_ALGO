@@ -49,4 +49,7 @@ void print_list(list_t *list);
 result_t sort(list_t *list);
 len_t length(list_t *list);
 
+// Distroy
+result_t distroy(list_t **list);
+
 #endif /* _LIST_H */

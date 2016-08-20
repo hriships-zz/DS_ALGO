@@ -15,7 +15,10 @@ int main() {
 
 	test_insert(list);
 	test_delete(list);
-	//test_examine(list);
+	test_examine(list);
+
+	distroy(&list);
+	assert(length(list) == 0);
 
 	exit (EXIT_SUCCESS);
 }
