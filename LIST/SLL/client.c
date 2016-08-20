@@ -6,6 +6,7 @@
 
 void test_insert(list_t*);
 void test_delete(list_t*);
+void test_examine(list_t*);
 
 int main() {
 
@@ -14,6 +15,7 @@ int main() {
 
 	test_insert(list);
 	test_delete(list);
+	//test_examine(list);
 
 	exit (EXIT_SUCCESS);
 }
@@ -51,6 +53,7 @@ void test_insert(list_t *list)
 void test_delete(list_t *list)
 {
 	result_t delete_result;
+
 	delete_result = delete_begin(list);
 	assert(delete_result == SUCCESS && is_at_begining(list, 5) == FALSE);
 
@@ -67,3 +70,14 @@ void test_delete(list_t *list)
 	assert(delete_result == SUCCESS && is_at_end(list, 40) == FALSE);
 }
 
+void test_examine(list_t *list)
+{
+	result_t examine_result;
+	data_t examine_data;
+
+	examine_result = examine_del_beg(list, &examine_data);
+	assert(examine_result == SUCCESS && examine_data == 10);
+
+	examine_result = examine_del_end(list, &examine_data);
+	assert(examine_result == SUCCESS && examine_data == 30);
+}

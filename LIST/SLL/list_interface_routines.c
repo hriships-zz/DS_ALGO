@@ -99,17 +99,9 @@ result_t delete_end(list_t *list)
 	}
 
 	node_t *target_back = get_second_last_node(list);
-	if(target_back == NULL) 
-	{
-		return (ERROR);	
-	}
-	else 
-	{
-		node_t *temp = target_back -> next;
-		unlink_nodes(target_back, temp);
-		return (SUCCESS);
-	}
-	
+	node_t *temp = target_back -> next;
+	unlink_nodes(target_back, temp);
+	return (SUCCESS);	
 }
 
 result_t is_at_begining(list_t *list, data_t data)
@@ -171,11 +163,33 @@ result_t is_at_end(list_t *list, data_t data)
 
 result_t examine_del_beg(list_t *list, data_t *p_object)
 {
-	return ERROR;
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);	
+	}
+	else
+	{
+		*p_object = list -> next -> data;
+		unlink_nodes(list, list -> next);
+		return (SUCCESS);
+	}
 }
 
 result_t examine_del_end(list_t *list, data_t *p_object)
-{return ERROR;}
+{
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+	else 
+	{
+		node_t *target_back = get_second_last_node(list);
+		node_t *temp = target_back -> next;
+		*p_object = temp -> data;
+		unlink_nodes(target_back, temp);
+		return (SUCCESS);
+	}
+}
 
 result_t is_empty(list_t *list)
 {

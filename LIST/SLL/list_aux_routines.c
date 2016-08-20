@@ -79,13 +79,12 @@ node_t *get_last_node(list_t *list)
 
 node_t *get_second_last_node(list_t *list)
 {
-	node_t **run = &list -> next;
+	node_t *back_node = list, *run = list -> next;
 
-	while(run != NULL && (*run) -> next != NULL) 
+	while(run -> next != NULL)
 	{
-		run = &(*run) -> next;
+		back_node = run;
+		run = run -> next;
 	}
-	run = (node_t**)(run - sizeof(data_t));
-		
-	return (*run);
+	return back_node;
 }
