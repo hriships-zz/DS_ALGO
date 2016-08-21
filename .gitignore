@@ -34,3 +34,8 @@
 
 #System files
 *.swp
+
+#Mac files
+.DS_Store
+*.c.swo
+*.h.swo

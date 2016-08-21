@@ -100,3 +100,15 @@ void list_to_array(list_t *list, len_t size, data_t array_object[])
 		run = run -> next;
 	}
 }
+
+void array_to_list(data_t array_object[], len_t size, list_t *list)
+{
+	int index = 0;
+	node_t *run = list -> next;
+
+	for(index =0; index < size; index++)
+	{
+		run -> data = array_object[index];
+		run = run -> next;
+	}
+}

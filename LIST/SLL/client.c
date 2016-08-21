@@ -96,9 +96,9 @@ void test_sorting(list_t *list)
  	num_of_elements = rand() % 16;
 
  	for(i=0; i < num_of_elements; i++) {
-        insert_at_end(list, rand());    
+        insert_at_end(list, rand() % 10);    
     }
-    print_list(list);
+
     result_t sort_result = sort(list);
     assert(sort_result == SUCCESS);
 }

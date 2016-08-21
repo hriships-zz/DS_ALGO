@@ -223,10 +223,20 @@ result_t sort(list_t *list)
 		return (ERROR);	
 	}
 
-	data_t *array_object = (data_t*) xcalloc(size, sizeof(data_t));
-	list_to_array(list, size, array_object);
+	data_t *array_data = (data_t*) xcalloc(size, sizeof(data_t));
+	list_to_array(list, size, array_data);
+	if(size < INSERTION_SHORT_SIZE)
+	{
+		insertion_sort(array_data, size);
+	}
+	else
+	{
+		heap_sort(array_data, size);
+	}
+	
+	array_to_list(array_data, size, list);
 
-	return ERROR;
+	return (SUCCESS);
 }
 
 len_t length(list_t *list)

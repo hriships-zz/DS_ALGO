@@ -1,7 +1,6 @@
 #include "sorting.h"
 
 
-
 void insertion_sort(int arr[], int size)
 {
     int i, j, key;

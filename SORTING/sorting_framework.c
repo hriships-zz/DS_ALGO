@@ -1,8 +1,8 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include "sorting.h"
-#include<assert.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sorting.h>
+#include <assert.h>
 
 #define VALID_ARGUMENTS 2
 
@@ -27,8 +27,14 @@ int main(int argv, char *args[]) {
     srand(time(NULL));
 
     input(arr, num_of_elements);
-    //insertion_sort(arr, num_of_elements);
-    heap_sort(arr, num_of_elements);
+
+    if(num_of_elements < 1000)
+    {
+        insertion_sort(arr, num_of_elements);
+    } else {
+        heap_sort(arr, num_of_elements);
+    }
+
     output(arr, num_of_elements);
     test_sorting(arr, num_of_elements);
 
