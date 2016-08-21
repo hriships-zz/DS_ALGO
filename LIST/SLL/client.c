@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <assert.h>
 #include "list.h"
 #include "sll.h"
@@ -7,6 +8,7 @@
 void test_insert(list_t*);
 void test_delete(list_t*);
 void test_examine(list_t*);
+void test_sorting(list_t*);
 
 int main() {
 
@@ -19,6 +21,9 @@ int main() {
 
 	distroy(&list);
 	assert(length(list) == 0);
+
+	list = create_list();
+	test_sorting(list);
 
 	exit (EXIT_SUCCESS);
 }
@@ -50,7 +55,6 @@ void test_insert(list_t *list)
 
 	insert_result = insert_after_data(list, 35, 45);
 	assert(insert_result == ERROR && is_after(list, 45, 35) == FALSE);
-
 }
 
 void test_delete(list_t *list)
@@ -83,4 +87,18 @@ void test_examine(list_t *list)
 
 	examine_result = examine_del_end(list, &examine_data);
 	assert(examine_result == SUCCESS && examine_data == 30);
+}
+
+void test_sorting(list_t *list)
+{
+	int i, num_of_elements;
+ 	srand(time(NULL));
+ 	num_of_elements = rand() % 16;
+
+ 	for(i=0; i < num_of_elements; i++) {
+        insert_at_end(list, rand());    
+    }
+    print_list(list);
+    result_t sort_result = sort(list);
+    assert(sort_result == SUCCESS);
 }

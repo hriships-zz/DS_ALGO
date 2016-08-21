@@ -14,4 +14,6 @@ node_t *serch_back_node(list_t *list, data_t data);
 node_t *get_last_node(list_t *list);
 node_t *get_second_last_node(list_t *list);
 
+void list_to_array(list_t *list, len_t size, data_t array_object[]);
+
 #endif

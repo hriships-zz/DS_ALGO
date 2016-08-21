@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sorting.h>
 #include "list.h"
 #include "sll.h"
 #include "list_aux.h"
@@ -216,7 +217,17 @@ void print_list(list_t *list)
 }
 
 result_t sort(list_t *list)
-{return ERROR;}
+{
+	len_t size = length(list);
+	if(size == 0) {
+		return (ERROR);	
+	}
+
+	data_t *array_object = (data_t*) xcalloc(size, sizeof(data_t));
+	list_to_array(list, size, array_object);
+
+	return ERROR;
+}
 
 len_t length(list_t *list)
 {
