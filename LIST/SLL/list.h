@@ -32,7 +32,7 @@ result_t delete_begin(list_t *list);
 result_t delete_data(list_t *list, data_t data);
 result_t delete_end(list_t *list);
 
-/* Membership routines */
+/* Membership testing */
 result_t is_at_begining(list_t *list, data_t data);
 result_t is_before(list_t *list, data_t search_key, data_t next_key);
 result_t find(list_t *list, data_t data);
@@ -49,11 +49,11 @@ void print_list(list_t *list);
 result_t sort(list_t *list);
 len_t length(list_t *list);
 
-/* Distroy*/
+/* Distroy */
 result_t distroy(list_t **list);
 
 /* Inter list operations */ 
-list_t *concat (list_t *lst1, list_t *lst2); 
-list_t *merge (list_t *lst1, list_t *lst2); 
+list_t *concat(list_t *lst1, list_t *lst2); 
+list_t *merge(list_t *lst1, list_t *lst2); 
 
 #endif /* _LIST_H */

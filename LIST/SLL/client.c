@@ -5,27 +5,31 @@
 #include "list.h"
 #include "sll.h"
 
+void test_create(list_t **list);
 void test_insert(list_t*);
 void test_delete(list_t*);
 void test_examine(list_t*);
 void test_sorting(list_t*);
+void test_distroy(list_t*);
 
 int main() {
 
-	list_t *list = create_list();
-	assert(list != NULL);
-
+	list_t *list = NULL;
+	test_create(&list);
 	test_insert(list);
 	test_delete(list);
 	test_examine(list);
-
-	distroy(&list);
-	assert(length(list) == 0);
-
-	list = create_list();
+	test_distroy(list);
+	test_create(&list);	
 	test_sorting(list);
 
 	exit (EXIT_SUCCESS);
+}
+
+void test_create(list_t **list)
+{
+	*list = create_list();
+	assert(*list != NULL);
 }
 
 void test_insert(list_t *list) 
@@ -87,6 +91,12 @@ void test_examine(list_t *list)
 
 	examine_result = examine_del_end(list, &examine_data);
 	assert(examine_result == SUCCESS && examine_data == 30);
+}
+
+void test_distroy(list_t* list)
+{
+	distroy(&list);
+	assert(length(list) == 0);
 }
 
 void test_sorting(list_t *list)
