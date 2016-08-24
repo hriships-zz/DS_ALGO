@@ -19,7 +19,7 @@ For Linux execute
 This build process compile the source and create shared library (.so) or dynamic library (.dylib) and link it with executable.
 
 # RUN
-    ./list 100
+    sorting 100
 
   - 100 is input size
 
