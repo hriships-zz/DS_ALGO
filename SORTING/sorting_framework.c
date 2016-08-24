@@ -32,7 +32,7 @@ int main(int argv, char *args[]) {
     {
         insertion_sort(arr, num_of_elements);
     } else {
-        heap_sort(arr, num_of_elements);
+        merge_sort(arr, num_of_elements);
     }
 
     output(arr, num_of_elements);
