@@ -28,7 +28,7 @@ int main(int argv, char *args[]) {
 
     input(arr, num_of_elements);
 
-    if(num_of_elements < 1000)
+    if(num_of_elements < INSERTION_SHORT_SIZE)
     {
         insertion_sort(arr, num_of_elements);
     } else {

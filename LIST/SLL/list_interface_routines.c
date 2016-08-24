@@ -231,7 +231,7 @@ result_t sort(list_t *list)
 	}
 	else
 	{
-		heap_sort(array_data, size);
+		merge_sort(array_data, size);
 	}
 	
 	array_to_list(array_data, size, list);

@@ -1,10 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "sorting.h"
 
 void devide_merge(int array[], int start, int end);
 void merge(int[], int start, int mid, int end);
 
 void merge_sort(int array[], int size) {
-    devide(array, 0, size -1);
+    devide_merge(array, 0, size -1);
 }
 
 void devide_merge(int array[], int start, int end) {
@@ -34,8 +36,8 @@ void merge(int array[], int start, int mid, int end) {
 	}
 
 	int left_ind = 0, right_ind = 0; 
-	for(i = start; i < end; i++) {
-		if(left_index < n1 && (right_ind >= n2 || left[left_ind] < right[right_ind]) {
+	for(i = start; i <= end; i++) {
+		if(right_ind >= n2 || (left_ind < n1 && left[left_ind] < right[right_ind])) {
 			array[i] = left[left_ind];
 			left_ind ++;
 		} else {
