@@ -18,8 +18,6 @@ For Linux execute
     
 This build process compile the source and create shared library (.so) or dynamic library (.dylib) and link it with executable.
 
-(TODO: Replace the buld porcess using MAKE)
-
 # RUN
     ./list 100
 
