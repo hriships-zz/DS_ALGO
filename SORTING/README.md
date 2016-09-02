@@ -8,14 +8,8 @@ Sorting framework selects right sorting algorithm based upon size of input, othe
   - Quick sort (in progress)
 
 # Build 
-For Mac execute 
+    make
 
-    build_mac.sh
-
-For Linux execute
-    
-    build_linux.sh
-    
 This build process compile the source and create shared library (.so) or dynamic library (.dylib) and link it with executable.
 
 # RUN

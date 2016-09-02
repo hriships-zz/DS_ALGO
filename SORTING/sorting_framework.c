@@ -12,7 +12,6 @@ void* xcalloc(int, int);
 /*framework functions*/
 void input(int [], int);
 void test_sorting(int[], int);
-void output(int [], int);
 
 int main(int argv, char *args[]) {
 
@@ -35,7 +34,6 @@ int main(int argv, char *args[]) {
         merge_sort(arr, num_of_elements);
     }
 
-    output(arr, num_of_elements);
     test_sorting(arr, num_of_elements);
 
     free(arr);

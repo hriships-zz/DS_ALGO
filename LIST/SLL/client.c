@@ -11,6 +11,7 @@ void test_delete(list_t*);
 void test_examine(list_t*);
 void test_sorting(list_t*);
 void test_distroy(list_t*);
+void test_concat();
 
 int main() {
 
@@ -19,10 +20,10 @@ int main() {
 	test_insert(list);
 	test_delete(list);
 	test_examine(list);
-	test_distroy(list);
+	test_distroy(&list);
 	test_create(&list);	
 	test_sorting(list);
-
+    test_concat();
 	exit (EXIT_SUCCESS);
 }
 
@@ -93,10 +94,10 @@ void test_examine(list_t *list)
 	assert(examine_result == SUCCESS && examine_data == 30);
 }
 
-void test_distroy(list_t* list)
+void test_distroy(list_t** list)
 {
-	distroy(&list);
-	assert(length(list) == 0);
+	distroy(*list);
+	assert(length(*list) == 0 && *list == NULL);
 }
 
 void test_sorting(list_t *list)
@@ -111,4 +112,8 @@ void test_sorting(list_t *list)
 
     result_t sort_result = sort(list);
     assert(sort_result == SUCCESS);
+}
+
+void test_concat()
+{
 }
