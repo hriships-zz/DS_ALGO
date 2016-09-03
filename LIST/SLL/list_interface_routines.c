@@ -258,18 +258,27 @@ len_t length(list_t *list)
 	return (len);
 }
 
-result_t distroy(list_t **list)
+result_t distroy(list_t **pp_list)
 {
-	node_t *run = *list, *n_run;
+	node_t *run = *pp_list, *n_run;
 
 	while(run != NULL)
 	{
 		n_run = run -> next;
-		run = run -> next;
-		free(n_run);
+		free(run);
+		run = n_run;
 	}
 
-	list = NULL;
+	*pp_list = NULL;
 
 	return (SUCCESS);
+}
+
+list_t *concat(list_t *lst1, list_t *lst2)
+{
+	node_t *end_node = get_last_node(lst1);
+	node_t *first_node = lst2 -> next;
+	end_node -> next = first_node;
+
+	return (lst1);
 }

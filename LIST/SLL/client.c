@@ -5,12 +5,12 @@
 #include "list.h"
 #include "sll.h"
 
-void test_create(list_t **list);
+void test_create(list_t**);
 void test_insert(list_t*);
 void test_delete(list_t*);
 void test_examine(list_t*);
 void test_sorting(list_t*);
-void test_distroy(list_t*);
+void test_distroy(list_t**);
 void test_concat();
 
 int main() {
@@ -96,7 +96,7 @@ void test_examine(list_t *list)
 
 void test_distroy(list_t** list)
 {
-	distroy(*list);
+	distroy(list);
 	assert(length(*list) == 0 && *list == NULL);
 }
 
@@ -106,7 +106,8 @@ void test_sorting(list_t *list)
  	srand(time(NULL));
  	num_of_elements = rand() % 16;
 
- 	for(i=0; i < num_of_elements; i++) {
+ 	for(i=0; i < num_of_elements; i++) 
+	{
         insert_at_end(list, rand() % 10);    
     }
 
@@ -116,4 +117,17 @@ void test_sorting(list_t *list)
 
 void test_concat()
 {
+	list_t *list_1 = create_list();
+	list_t *list_2 = create_list();
+
+	insert_at_end(list_1, 10);
+	insert_at_end(list_1, 20);
+	insert_at_end(list_1, 30);
+
+	insert_at_end(list_2, 40);
+	insert_at_end(list_2, 50);
+	insert_at_end(list_2, 60);
+
+	list_t *new_list = concat(list_1, list_2);
+	assert(is_at_begining(new_list, 10) && is_at_end(new_list, 60));
 }
