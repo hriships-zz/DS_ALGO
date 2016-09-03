@@ -11,7 +11,8 @@ void test_delete(list_t*);
 void test_examine(list_t*);
 void test_sorting(list_t*);
 void test_distroy(list_t**);
-void test_concat();
+void test_concat_lists();
+void test_merge_lists();
 
 int main() {
 
@@ -23,7 +24,9 @@ int main() {
 	test_distroy(&list);
 	test_create(&list);	
 	test_sorting(list);
-    test_concat();
+	test_distroy(&list);
+    test_concat_lists();
+	test_merge_lists();
 	exit (EXIT_SUCCESS);
 }
 
@@ -115,7 +118,7 @@ void test_sorting(list_t *list)
     assert(sort_result == SUCCESS);
 }
 
-void test_concat()
+void test_concat_lists()
 {
 	list_t *list_1 = create_list();
 	list_t *list_2 = create_list();
@@ -130,4 +133,28 @@ void test_concat()
 
 	list_t *new_list = concat(list_1, list_2);
 	assert(is_at_begining(new_list, 10) && is_at_end(new_list, 60));
+	
+	distroy(&new_list);
+	free(list_2);
+}
+
+void test_merge_lists()
+{
+	list_t *list_1 = create_list();
+	list_t *list_2 = create_list();
+	 
+	insert_at_end(list_1, 100);
+	insert_at_end(list_1, 54);
+	insert_at_end(list_1, 65);
+	 
+	insert_at_end(list_2, 87);
+	insert_at_end(list_2, 120);
+	insert_at_end(list_2, 45);
+
+	list_t *merged_list = merge(list_1, list_2);
+	assert(merged_list != NULL && is_at_begining(merged_list, 45) && is_at_end(merged_list, 120));
+	
+	distroy(&merged_list);
+	/*distroy(&list_2);
+	distroy(&merged_list);*/
 }

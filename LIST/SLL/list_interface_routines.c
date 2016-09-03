@@ -225,6 +225,7 @@ result_t sort(list_t *list)
 
 	data_t *array_data = (data_t*) xcalloc(size, sizeof(data_t));
 	list_to_array(list, size, array_data);
+	
 	if(size < INSERTION_SHORT_SIZE)
 	{
 		insertion_sort(array_data, size);
@@ -281,4 +282,12 @@ list_t *concat(list_t *lst1, list_t *lst2)
 	end_node -> next = first_node;
 
 	return (lst1);
+}
+
+list_t *merge(list_t *lst1, list_t *lst2)
+{
+	list_t *list = concat(lst1, lst2);
+	sort(list);
+
+	return (list);
 }
