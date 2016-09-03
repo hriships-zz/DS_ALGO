@@ -47,6 +47,7 @@ result_t examine_del_end(list_t *list, data_t *p_object);
 result_t is_empty(list_t *list);
 void print_list(list_t *list);
 result_t sort(list_t *list);
+result_t reverse_list(list_t *list);
 len_t length(list_t *list);
 
 /* Distroy */

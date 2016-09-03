@@ -13,8 +13,9 @@ void test_sorting(list_t*);
 void test_distroy(list_t**);
 void test_concat_lists();
 void test_merge_lists();
+void test_reverse_lists();
 
-int main() {
+int main(int args, char *arg[]) {
 
 	list_t *list = NULL;
 	test_create(&list);
@@ -27,6 +28,7 @@ int main() {
 	test_distroy(&list);
     test_concat_lists();
 	test_merge_lists();
+	test_reverse_lists();
 	exit (EXIT_SUCCESS);
 }
 
@@ -154,4 +156,18 @@ void test_merge_lists()
 	assert(merged_list != NULL && is_at_begining(merged_list, 45) && is_at_end(merged_list, 120));
 	
 	distroy(&merged_list);
+}
+
+void test_reverse_lists()
+{
+	list_t *list = create_list();
+	insert_at_end(list, 10);
+	insert_at_end(list, 20);
+	insert_at_end(list, 30);
+	insert_at_end(list, 40);
+	
+	result_t reverse_result = reverse_list(list);
+	assert(reverse_result == SUCCESS && is_at_begining(list, 40) && is_at_end(list, 10));
+
+	distroy(&list);
 }

@@ -240,6 +240,22 @@ result_t sort(list_t *list)
 	return (SUCCESS);
 }
 
+result_t reverse_list(list_t *list)
+{
+	node_t *prev = NULL, *run = list -> next, *next;
+
+	while(run != NULL)
+	{
+		next = run -> next;
+		run -> next = prev;
+		prev = run;
+		run = next;
+	}
+
+	list -> next = prev;
+
+	return (SUCCESS);
+}
 len_t length(list_t *list)
 {
 	int len = 0;
