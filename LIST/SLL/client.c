@@ -107,11 +107,11 @@ void test_sorting(list_t *list)
 {
 	int i, num_of_elements;
  	srand(time(NULL));
- 	num_of_elements = rand() % 16;
+ 	num_of_elements = rand()%16;
 
  	for(i=0; i < num_of_elements; i++) 
 	{
-        insert_at_end(list, rand() % 10);    
+        insert_at_end(list, rand());    
     }
 
     result_t sort_result = sort(list);
@@ -135,7 +135,6 @@ void test_concat_lists()
 	assert(is_at_begining(new_list, 10) && is_at_end(new_list, 60));
 	
 	distroy(&new_list);
-	free(list_2);
 }
 
 void test_merge_lists()
@@ -155,6 +154,4 @@ void test_merge_lists()
 	assert(merged_list != NULL && is_at_begining(merged_list, 45) && is_at_end(merged_list, 120));
 	
 	distroy(&merged_list);
-	/*distroy(&list_2);
-	distroy(&merged_list);*/
 }
