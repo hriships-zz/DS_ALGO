@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <assert.h>
-#include "list.h"
-#include "sll.h"
+#include <list.h>
+#include <sll.h>
 
 void test_create(list_t**);
 void test_insert(list_t*);

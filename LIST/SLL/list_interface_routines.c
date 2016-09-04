@@ -256,6 +256,7 @@ result_t reverse_list(list_t *list)
 
 	return (SUCCESS);
 }
+
 len_t length(list_t *list)
 {
 	int len = 0;
