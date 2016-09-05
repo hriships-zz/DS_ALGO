@@ -33,12 +33,11 @@ void merge(int array[], int start, int mid, int end) {
 	for(i =0; i < n1; i++) {
 		left[i] = array[start + i];
 	}
-
 	for(i =0; i < n2; i++) {
 		right[i] = array[mid + 1 + i];
 	}
-    left[n1] = INFINITY;
-    right[n2] = INFINITY;
+	left[n1] = INFINITY;
+	right[n2] = INFINITY;
 
 	int left_ind = 0, right_ind = 0; 
 	for(i = start; i <= end; i++) {

@@ -18,7 +18,6 @@ SORING_MAKE:
 	@sudo cp sorting.h /usr/include/
 	@$(CC) $(CCBFLAGS) -o sorting sorting_framework.c
 	@./sorting 10
+	@./sorting 1000
 	@echo "SORTING TESTS: PASSED"
 	@sudo cp sorting /usr/bin/
-	@echo "Sorting compiled successfully, build with <3 core programming academy"
-	@echo "https://www.facebook.com/coreprogrammingacademy/"

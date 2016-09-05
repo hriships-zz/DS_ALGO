@@ -18,7 +18,8 @@ void output(int arr[], int num_of_elements);
 int main(int argv, char *args[]) 
 {
 
-    if(argv != VALID_ARGUMENTS) {
+    if(argv != VALID_ARGUMENTS) 
+	{
         fprintf(stderr, "Invalid arguments: %s \n", args[1]);
         exit(EXIT_FAILURE);
     }
@@ -67,13 +68,14 @@ void sort(int array[], int num_of_elements)
 {
 	if(num_of_elements < INSERTION_SHORT_SIZE)
 	{   
-		insertion_sort(array, num_of_elements);
+		heap_sort(array, num_of_elements);
 	} 
 	else
 	{   
-		merge_sort(array, num_of_elements);
+		heap_sort(array, num_of_elements);
 	}
 }
+
 void test_sorting(int arr[], int size) 
 {
     int i;

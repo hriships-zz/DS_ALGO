@@ -1,3 +1,5 @@
+#include<stdio.h>
+#include<stdlib.h>
 #include "sorting.h"
 
 void build_heap(int array[], int size);
@@ -13,12 +15,11 @@ void heap_sort(int array[], int size) {
         heap_size --;
         max_heapify(array, 0, heap_size);
     }
-
 }
 
 void build_heap(int array[], int size) {
     int i;
-    for(i= (size-1)/2; i > 0; i--) {
+    for(i = (size/2)-1; i >= 0; i--) {
         max_heapify(array, i, size);  
     }
 }
@@ -28,10 +29,10 @@ void max_heapify(int array[], int i, int size) {
     int right = 2 * i + 2;
     int largest = i;
 
-    if(left <= size && array[left] > array[i])
+    if(left <= size && array[left] > array[largest])
         largest = left;
 
-    if(right <= size && array[right] > array[i])
+    if(right <= size && array[right] > array[largest])
         largest = right;
 
     if(largest != i) {
