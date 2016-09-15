@@ -242,17 +242,7 @@ result_t sort(list_t *list)
 
 result_t reverse_list(list_t *list)
 {
-	node_t *prev = NULL, *run = list -> next, *next;
-
-	while(run != NULL)
-	{
-		next = run -> next;
-		run -> next = prev;
-		prev = run;
-		run = next;
-	}
-
-	list -> next = prev;
+	reverse_node(&list-> next);
 
 	return (SUCCESS);
 }

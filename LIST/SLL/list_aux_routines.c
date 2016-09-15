@@ -89,6 +89,24 @@ node_t *get_second_last_node(list_t *list)
 	return back_node;
 }
 
+void reverse_node(node_t **pp_node)
+{
+	if(*pp_node == NULL)
+		return;
+	
+	node_t *current = *pp_node;
+	node_t *next_node = current -> next;
+
+	if(current-> next == NULL)
+		return;
+
+	reverse_node(&next_node);
+	next_node -> next  = current;
+	current -> next = NULL;
+
+	*pp_node = next_node;
+}
+	
 void list_to_array(list_t *list, len_t size, data_t array_object[])
 {
 	int index = 0;
