@@ -237,6 +237,8 @@ result_t sort(list_t *list)
 	
 	array_to_list(array_data, size, list);
 
+	free(array_data);
+
 	return (SUCCESS);
 }
 
@@ -282,13 +284,13 @@ result_t distroy(list_t **pp_list)
 	return (SUCCESS);
 }
 
-list_t *concat(list_t *lst1, list_t *lst2)
+list_t *concat(list_t *list1, list_t *list2)
 {
-	node_t *end_node = get_last_node(lst1);
-	node_t *first_node = lst2 -> next;
+	node_t *end_node = get_last_node(list1);
+	node_t *first_node = list2 -> next;
 	end_node -> next = first_node;
 
-	return (lst1);
+	return (list1);
 }
 
 list_t *merge(list_t *lst1, list_t *lst2)

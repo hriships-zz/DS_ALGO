@@ -17,6 +17,7 @@ LIST_MAKE:
 	@sudo cp $(LIB_NAME) /usr/lib/
 	@rm $(LIB_NAME)
 	@sudo cp {list.h,sll.h} /usr/include/
+	@rm -f list
 	@$(CC) $(CCBFLAGS) -o list client.c
 	@./list
 	@echo "SLL TESTS: PASSED"
