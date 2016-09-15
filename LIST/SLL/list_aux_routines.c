@@ -106,7 +106,39 @@ void reverse_node(node_t **pp_node)
 
 	*pp_node = next_node;
 }
-	
+
+node_t * merge_sorted_list(node_t *head1, node_t *head2)
+{
+	if(head1 == NULL && head2 == NULL)
+	{
+		return NULL;
+	}
+
+	if(head2 == NULL && head1 != NULL)
+	{
+		head1 -> next = merge_list(head1 -> next, head2);
+		return head1;
+	}
+
+	if(head1 == NULL && head2 != NULL)
+	{
+		head2 -> next = merge_list(head1, head2 -> next);
+		return head2;
+	}
+
+	if(head1 -> data < head2 -> data)
+	{
+		 head1 -> next = merge_list(head1 -> next, head2);
+		 return head1;
+	}
+	else
+	{
+		head2 -> next = merge_list(head1, head2 -> next);
+		return head2;
+	}
+
+}
+
 void list_to_array(list_t *list, len_t size, data_t array_object[])
 {
 	int index = 0;
