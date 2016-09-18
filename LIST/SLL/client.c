@@ -29,6 +29,7 @@ int main(int args, char *arg[]) {
     test_concat_lists();
 	test_merge_lists();
 	test_reverse_lists();
+
 	exit (EXIT_SUCCESS);
 }
 

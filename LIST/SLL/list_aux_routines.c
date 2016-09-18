@@ -114,13 +114,13 @@ node_t *merge_sorted_list(node_t *head1, node_t *head2)
 		return NULL;
 	}
 
-	if(head2 == NULL && head1 != NULL)
+	if(head2 == NULL)
 	{
 		head1 -> next = merge_sorted_list(head1 -> next, head2);
 		return head1;
 	}
 
-	if(head1 == NULL && head2 != NULL)
+	if(head1 == NULL)
 	{
 		head2 -> next = merge_sorted_list(head1, head2 -> next);
 		return head2;
