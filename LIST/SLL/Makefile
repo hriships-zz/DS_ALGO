@@ -21,7 +21,6 @@ LIST_MAKE:
 	@$(CC) $(CCBFLAGS) -o list client.c
 	@./list
 	@echo "SLL TESTS: PASSED"
-	@sudo cp list /usr/bin/
 	@echo "Singley Linked List (SLL) compiled successfully, build with <3 core programming academy"
 	@echo "https://www.facebook.com/coreprogrammingacademy/"
 

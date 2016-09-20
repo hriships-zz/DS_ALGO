@@ -20,4 +20,3 @@ SORING_MAKE:
 	@./sorting 10
 	@./sorting 1000
 	@echo "SORTING TESTS: PASSED"
-	@sudo cp sorting /usr/bin/

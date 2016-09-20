@@ -16,7 +16,7 @@ node_t *get_second_last_node(list_t *list);
 void reverse_node(node_t **pp_node);
 node_t *merge_sorted_list(node_t *head1, node_t *head2);
 
-void list_to_array(list_t *list, len_t size, data_t array_object[]);
+data_t* list_to_array(list_t *list, len_t size);
 void array_to_list(data_t array_object[], len_t size, list_t *list);
 
 #endif

@@ -139,16 +139,23 @@ node_t *merge_sorted_list(node_t *head1, node_t *head2)
 
 }
 
-void list_to_array(list_t *list, len_t size, data_t array_object[])
+data_t* list_to_array(list_t *list, len_t size)
 {
-	int index = 0;
-	node_t *run = list -> next;
+	int index;
+	data_t* array_object;
+	node_t *run;
+
+	index = 0;
+	array_object = (data_t*) xcalloc(size, sizeof(data_t));
+	run = list -> next;
 	
 	while(run != NULL)
 	{
 		array_object[index++] = run -> data;
 		run = run -> next;
 	}
+
+	return array_object;
 }
 
 void array_to_list(data_t array_object[], len_t size, list_t *list)

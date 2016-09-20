@@ -5,7 +5,7 @@
 #include <list.h>
 #include <sll.h>
 
-void test_create(list_t**);
+list_t* test_create();
 void test_insert(list_t*);
 void test_delete(list_t*);
 void test_examine(list_t*);
@@ -18,12 +18,12 @@ void test_reverse_lists();
 int main(int args, char *arg[]) {
 
 	list_t *list = NULL;
-	test_create(&list);
+	list = test_create();
 	test_insert(list);
 	test_delete(list);
 	test_examine(list);
 	test_distroy(&list);
-	test_create(&list);	
+	list = test_create();	
 	test_sorting(list);
 	test_distroy(&list);
     test_concat_lists();
@@ -33,10 +33,11 @@ int main(int args, char *arg[]) {
 	exit (EXIT_SUCCESS);
 }
 
-void test_create(list_t **list)
+list_t* test_create()
 {
-	*list = create_list();
-	assert(*list != NULL);
+	list_t *list = create_list();
+	assert(list != NULL);
+	return list;
 }
 
 void test_insert(list_t *list) 

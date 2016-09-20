@@ -223,8 +223,8 @@ result_t sort(list_t *list)
 		return (ERROR);	
 	}
 
-	data_t *array_data = (data_t*) xcalloc(size, sizeof(data_t));
-	list_to_array(list, size, array_data);
+	//data_t *array_data = (data_t*) xcalloc(size, sizeof(data_t));
+	data_t *array_data = list_to_array(list, size);
 	
 	if(size < INSERTION_SHORT_SIZE)
 	{
