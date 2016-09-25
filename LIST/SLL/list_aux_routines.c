@@ -101,7 +101,7 @@ void reverse_node(node_t **pp_node)
 		return;
 
 	reverse_node(&next_node);
-	next_node -> next  = current;
+	current -> next -> next  = current;
 	current -> next = NULL;
 
 	*pp_node = next_node;
