@@ -169,7 +169,8 @@ void test_reverse_lists()
 	insert_at_end(list, 40);
 	
 	result_t reverse_result = reverse_list(list);
-	assert(reverse_result == SUCCESS && is_at_begining(list, 40) && is_at_end(list, 10));
+	assert(reverse_result == SUCCESS && is_at_begining(list, 40) && insert_before_data(list, 40, 30) && is_after(list,
+	10, 20)  && is_at_end(list, 10));
 
 	distroy(&list);
 }
