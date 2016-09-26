@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <sorting.h>
@@ -31,7 +31,7 @@ int main(int argv, char *args[])
 	// populates array with random numbers
     input(arr, num_of_elements);
 
-	sort(arr, num_of_elements);
+    sort(arr, num_of_elements);
 	
     test_sorting(arr, num_of_elements);
 
@@ -68,7 +68,7 @@ void sort(int array[], int num_of_elements)
 {
 	if(num_of_elements < INSERTION_SHORT_SIZE)
 	{   
-		heap_sort(array, num_of_elements);
+		insertion_sort(array, num_of_elements);
 	} 
 	else
 	{   
