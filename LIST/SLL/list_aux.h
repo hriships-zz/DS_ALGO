@@ -9,8 +9,8 @@ node_t *get_new_node(data_t data);
 void link_nodes(node_t *target, node_t *new_node);
 void unlink_nodes(node_t *target, node_t *remove_node);
 
-node_t *serch_node(list_t *list, data_t data);
-node_t *serch_back_node(list_t *list, data_t data);
+node_t *search_node(list_t *list, data_t data);
+node_t *search_back_node(list_t *list, data_t data);
 node_t *get_last_node(list_t *list);
 node_t *get_second_last_node(list_t *list);
 void reverse_node(node_t **pp_node);

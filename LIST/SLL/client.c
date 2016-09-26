@@ -156,7 +156,7 @@ void test_merge_lists()
 
 	list_t *merged_list = merge(list_1, list_2);
 	assert(merged_list != NULL && is_at_begining(merged_list, 45) && is_at_end(merged_list, 120));
-	
+
 	distroy(&merged_list);
 }
 

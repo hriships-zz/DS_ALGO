@@ -33,7 +33,7 @@ void unlink_nodes(node_t *target, node_t *remove_node)
 	free(remove_node);
 }
 
-node_t *serch_node(list_t *list, data_t data) 
+node_t *search_node(list_t *list, data_t data) 
 {
 	node_t *run = list -> next;
 
@@ -49,7 +49,7 @@ node_t *serch_node(list_t *list, data_t data)
 	return (NULL);
 }
 
-node_t *serch_back_node(list_t *list, data_t data)
+node_t *search_back_node(list_t *list, data_t data)
 {
 	node_t *run = list;
 

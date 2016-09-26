@@ -30,7 +30,7 @@ result_t insert_at_end(list_t *list, data_t data)
 
 result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key)
 {
-	node_t *target = serch_back_node(list, search_key);
+	node_t *target = search_back_node(list, search_key);
 
 	if(target == NULL) 
 	{
@@ -46,7 +46,7 @@ result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key)
 
 result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
 {
-	node_t *target = serch_node(list, search_key);
+	node_t *target = search_node(list, search_key);
 
 	if(target == NULL) 
 	{
@@ -79,7 +79,7 @@ result_t delete_data(list_t *list, data_t data)
 		return (ERROR);
 	}
 
-	node_t *target = serch_back_node(list, data);
+	node_t *target = search_back_node(list, data);
 	if(target == NULL)
 	{
 		return (ERROR);	
@@ -113,7 +113,7 @@ result_t is_at_begining(list_t *list, data_t data)
 
 result_t is_before(list_t *list, data_t search_key, data_t next_key)
 {
-	node_t *target = serch_node(list, search_key);
+	node_t *target = search_node(list, search_key);
 
 	if(target != NULL && (target -> next == NULL || target -> next -> data == next_key)) 
 	{
@@ -144,7 +144,7 @@ result_t find(list_t *list, data_t data)
 
 result_t is_after(list_t *list, data_t search_key, data_t after_data)
 {
-	node_t *target = serch_node(list, after_data);
+	node_t *target = search_node(list, after_data);
 
 	if(target != NULL && (target -> next != NULL || target -> next -> data == search_key))
 	{
@@ -223,7 +223,6 @@ result_t sort(list_t *list)
 		return (ERROR);	
 	}
 
-	//data_t *array_data = (data_t*) xcalloc(size, sizeof(data_t));
 	data_t *array_data = list_to_array(list, size);
 	
 	if(size < INSERTION_SHORT_SIZE)
@@ -295,8 +294,11 @@ list_t *concat(list_t *list1, list_t *list2)
 
 list_t *merge(list_t *lst1, list_t *lst2)
 {
-	list_t *list = concat(lst1, lst2);
-	sort(list);
+	sort(lst1);
+	sort(lst2);
+	
+	list_t *merged_list = create_list();
+	merged_list -> next = merge_sorted_list(lst1 -> next, lst2 -> next);
 
-	return (list);
+	return (merged_list);
 }
