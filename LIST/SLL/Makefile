@@ -20,7 +20,7 @@ LIST_MAKE:
 	sudo cp list.h /usr/include/
 	sudo cp sll.h /usr/include/
 	rm -f list
-	$(CC) -g -o list client.c $(CCBFLAGS)
+	$(CC) -o list client.c $(CCBFLAGS)
 	./list
 	echo "SLL TESTS: PASSED"
 	echo "Singley Linked List (SLL) compiled successfully"
