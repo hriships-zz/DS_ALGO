@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "sorting.h"
+#define LEFT(n) (n << 1) + 1
+#define RIGHT(n) (n << 1) + 2
 
 void build_heap(int array[], int size);
 void max_heapify(int array[], int i, int size);
@@ -25,8 +27,8 @@ void build_heap(int array[], int size) {
 }
 
 void max_heapify(int array[], int i, int size) {
-    int left  = 2 * i + 1;
-    int right = 2 * i + 2;
+    int left  = LEFT(i);
+    int right = RIGHT(i);
     int largest = i;
 
     if(left <= size && array[left] > array[largest])

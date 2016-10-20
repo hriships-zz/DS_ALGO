@@ -17,7 +17,7 @@ SORING_MAKE:
 	sudo cp $(LIB_NAME) /usr/lib/
 	rm $(LIB_NAME)
 	sudo cp sorting.h /usr/include/
-	$(CC) -o sorting sorting_framework.c $(CCBFLAGS) 
+	$(CC) -o sorting client.c $(CCBFLAGS) 
 	./sorting 10
 	./sorting 1000
 	echo "SORTING TESTS: PASSED"
