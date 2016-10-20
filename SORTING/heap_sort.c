@@ -4,7 +4,7 @@
 #define LEFT(n) (n << 1) + 1
 #define RIGHT(n) (n << 1) + 2
 
-void build_heap(int array[], int size);
+void build_max_heap(int array[], int size);
 void max_heapify(int array[], int i, int size);
 void swap(int array[], int i, int j);
 
