@@ -9,7 +9,7 @@ void max_heapify(int array[], int i, int size);
 void swap(int array[], int i, int j);
 
 void heap_sort(int array[], int size) {
-    build_heap(array, size);
+    build_max_heap(array, size);
     int heap_size = size -1, i;
     
     for(i = heap_size; i > 0; i--) {
@@ -19,7 +19,7 @@ void heap_sort(int array[], int size) {
     }
 }
 
-void build_heap(int array[], int size) {
+void build_max_heap(int array[], int size) {
     int i;
     for(i = (size/2)-1; i >= 0; i--) {
         max_heapify(array, i, size);  
