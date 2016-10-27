@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "sorting.h"
+
+#define PARENT(n) n/2
 #define LEFT(n) (n << 1) + 1
 #define RIGHT(n) (n << 1) + 2
 
