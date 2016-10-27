@@ -12,8 +12,6 @@ list_t *create_list()
 	{
 		fprintf(stderr, "OUT OF MEMMORY : ERR CODE");
 	} 
-	else 
-	{
-		return (list_t*) mem_block;	
-	}
+	
+	return (list_t*) mem_block;	
 }
