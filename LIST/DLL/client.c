@@ -40,5 +40,9 @@ void test_insert(list_t* list)
 	insert_result = insert_at_begin(list, 10);
 	assert(insert_result == SUCCESS && is_at_begining(list, 10) == TRUE);
 	print_list(list);
+
+	insert_result = insert_at_end(list, 40);
+	assert(insert_result == SUCCESS && is_at_end(list, 40) == TRUE);
+	print_list(list);
 }
 

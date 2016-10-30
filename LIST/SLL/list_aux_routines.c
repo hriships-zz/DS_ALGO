@@ -14,6 +14,7 @@ void *xcalloc(int units, int unit_size)
 
 	return block;
 }
+
 node_t *get_new_node(data_t data) 
 {
 	node_t *new_node = (node_t*) xcalloc(1, sizeof(node_t));
