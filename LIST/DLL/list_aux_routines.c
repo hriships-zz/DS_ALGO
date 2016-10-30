@@ -25,3 +25,24 @@ node_t *get_node(data_t data)
 	return new_node;
 }
 
+node_t *get_last_node(list_t *list)
+{
+	node_t *run;
+
+	run = list -> next;
+	while(run -> next != NULL)
+	{
+		run = run -> next;
+	}
+
+	return run;
+}
+
+void link_nodes(node_t *target_node, node_t *new_node)
+{
+	new_node -> next = target_node -> next;
+	new_node -> prev = target_node -> prev;
+	if(target_node -> next != NULL)
+		target_node -> next -> prev = new_node;
+	target_node -> next = new_node;
+}

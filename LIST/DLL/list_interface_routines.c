@@ -15,11 +15,7 @@ result_t insert_at_begin(list_t *list, data_t data)
 	head = list;
 	new_node = get_node(data);
 
-	new_node -> next = head -> next;
-	if(head -> next != NULL)
-		head -> next -> prev = new_node;
-	head -> next = new_node;
-	new_node -> prev = head;
+	link_nodes(head, new_node);
 
 	return (SUCCESS);
 }
@@ -32,21 +28,12 @@ result_t is_at_begining(list_t *list, data_t data)
 
 result_t insert_at_end(list_t *list, data_t data)
 {
-	node_t *run, *new_node;
+	node_t *last_node, *new_node;
 
-	run = list -> next;
-	while(run -> next != NULL)
-	{
-		run = run -> next;
-	}
-
+	last_node = get_last_node(list); 
 	new_node = get_node(data);
 	
-	new_node -> next = run -> next;
-	if(run -> next != NULL)
-		run -> next -> prev = new_node;
-	run -> next = new_node;
-	new_node -> prev = run;
+	link_nodes(last_node, new_node);
 
 	return (SUCCESS);
 }
