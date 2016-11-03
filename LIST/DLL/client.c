@@ -51,4 +51,9 @@ void test_insert(list_t* list)
 	assert(insert_result == SUCCESS);
 	assert(is_before(list, 30, 40) == TRUE);
 	print_list(list);
+
+	insert_result = insert_after_data(list, 10, 20);
+	assert(insert_result == SUCCESS);
+	print_list(list);
+	assert(is_after(list, 20, 10) == TRUE);
 }

@@ -90,6 +90,39 @@ result_t is_before(list_t *list, data_t search_key, data_t next_key)
 	}
 }
 
+result_t insert_after_data(list_t *list, data_t search_key, data_t insert_key)
+{
+	node_t *target;
+
+	target = search_node(list, search_key);
+
+	if(target != NULL)
+	{
+		link_nodes(target, get_node(insert_key));
+		return (SUCCESS);
+	}
+	else 
+	{
+		return (ERROR);
+	}
+}
+
+result_t is_after(list_t *list, data_t search_key, data_t after_key)
+{
+	node_t *target;
+
+	target = search_node(list, search_key);
+
+	if(target != NULL && target -> prev -> data == after_key)
+	{
+		return (TRUE);
+	}
+	else
+	{
+		return (FALSE);
+	}
+}
+
 void print_list(list_t *list)
 {
 	node_t *run = list -> next;
