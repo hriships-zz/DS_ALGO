@@ -58,6 +58,61 @@ result_t is_at_end(list_t *list, data_t data)
 	}
 }
 
+result_t insert_before_data(list_t *list, data_t search_key, data_t insert_key)
+{
+	node_t *run, *target;
+
+	run = list -> next;
+	target = NULL;
+	while(run != NULL)
+	{
+		if(run -> data == search_key)
+		{
+			target = run;
+			break;
+		}
+
+		run = run -> next;
+	}
+	if(target != NULL)
+	{
+		link_nodes(target -> prev, get_node(insert_key));
+		return (SUCCESS);
+	} 
+	else 
+	{
+		return (ERROR);
+	}
+}
+
+result_t is_before(list_t *list, data_t search_key, data_t next_key)
+{
+	list_t *run, *target, *prev;
+
+	run = list -> next;
+	target = NULL;
+
+	while(run != NULL)
+	{
+		if(run -> data == search_key)
+		{
+			target = run;
+			break;
+		}
+
+		run = run -> next;
+	}
+	
+	if(target != NULL && target -> next -> data == next_key)
+	{
+		return (TRUE);
+	}
+	else
+	{
+		return (FALSE);
+	}
+}
+
 void print_list(list_t *list)
 {
 	node_t *run = list -> next;

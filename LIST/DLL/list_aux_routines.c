@@ -41,8 +41,10 @@ node_t *get_last_node(list_t *list)
 void link_nodes(node_t *target_node, node_t *new_node)
 {
 	new_node -> next = target_node -> next;
-	new_node -> prev = target_node -> prev;
+	new_node -> prev = target_node;
 	if(target_node -> next != NULL)
+	{
 		target_node -> next -> prev = new_node;
+	}
 	target_node -> next = new_node;
 }
