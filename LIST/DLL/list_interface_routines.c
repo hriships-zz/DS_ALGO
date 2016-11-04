@@ -158,12 +158,7 @@ result_t delete_begin(list_t *list)
 
 	target = list -> next;
 
-	target -> prev -> next = target -> next;
-	if(target -> next != NULL)
-	{
-		target -> next -> prev = target -> prev;
-	}
-	free(target);
+	unlink_node(target);
 
 	return (SUCCESS);
 }
@@ -182,13 +177,7 @@ result_t delete_data(list_t *list, data_t data)
 
 	if(target != NULL) 
 	{
-		target -> prev -> next = target -> next;
-		if(target -> next != NULL)
-		{
-			target -> next -> prev = target -> prev;
-		}
-		free(target);
-		
+		unlink_node(target);
 		return (SUCCESS);
 	}
 	else

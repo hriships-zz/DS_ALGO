@@ -66,3 +66,13 @@ void link_nodes(node_t *target_node, node_t *new_node)
 	}
 	target_node -> next = new_node;
 }
+
+void unlink_node(node_t *target)
+{
+	target -> prev -> next = target -> next;
+	if(target -> next != NULL)
+	{
+		target -> next -> prev = target -> prev;
+	}
+	free(target);
+}
