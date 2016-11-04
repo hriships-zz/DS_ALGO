@@ -145,9 +145,31 @@ result_t is_after(list_t *list, data_t search_key, data_t after_key)
 	}
 }
 
+
+result_t delete_begin(list_t *list)
+{
+
+	node_t *target;
+
+	if(is_empty(list))
+	{
+		return (ERROR);
+	}	
+
+	target = list -> next;
+
+	target -> prev -> next = target -> next;
+	if(target -> next != NULL)
+	{
+		target -> next -> prev = target -> prev;
+	}
+
+	return (SUCCESS);
+}
+
 result_t is_empty(list_t *list)
 {
-	if(list == NULL && list -> next == NULL)
+	if(list == NULL || list -> next == NULL)
 		return (TRUE);
 	else 
 		return (FALSE);

@@ -21,6 +21,7 @@ int main(int args, char *arg[])
 	list = test_create();
 
 	test_insert(list);
+	test_delete(list);
 	exit (EXIT_SUCCESS);
 }
 
@@ -89,4 +90,23 @@ void test_insert(list_t* list)
 	_test_insert_at_end(list);
 	_test_insert_before_data(list);
 	_test_insert_after_data(list);
+}
+
+void _test_delete_begin(list_t *list)
+{
+	result_t del_result;
+
+	del_result = delete_begin(list);
+	assert(del_result == SUCCESS);
+	assert(is_at_begining(list, 10) == FALSE);
+
+	del_result = delete_begin(NULL);
+	assert(del_result == ERROR);
+
+	print_list(list);
+}
+
+void test_delete(list_t *list)
+{
+	_test_delete_begin(list);
 }
