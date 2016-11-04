@@ -17,7 +17,6 @@ void test_reverse_lists();
 
 int main(int args, char *arg[]) 
 {
-
 	list_t *list = NULL;
 	list = test_create();
 
@@ -36,10 +35,12 @@ list_t* test_create()
 void test_insert(list_t* list)
 {
 	result_t insert_result;
-
+	
 	insert_result = insert_at_begin(list, 10);
 	assert(insert_result == SUCCESS); 
 	assert(is_at_begining(list, 10) == TRUE);
+	insert_result = insert_at_begin(NULL, 10);
+	assert(insert_result == ERROR);
 	print_list(list);
 
 	insert_result = insert_at_end(list, 40);
