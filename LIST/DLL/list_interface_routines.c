@@ -151,7 +151,7 @@ result_t delete_begin(list_t *list)
 
 	node_t *target;
 
-	if(is_empty(list))
+	if(is_empty(list) == TRUE)
 	{
 		return (ERROR);
 	}	
@@ -163,8 +163,43 @@ result_t delete_begin(list_t *list)
 	{
 		target -> next -> prev = target -> prev;
 	}
+	free(target);
 
 	return (SUCCESS);
+}
+
+result_t delete_data(list_t *list, data_t data)
+{
+	node_t *run, *target;
+	
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+
+	run = list -> next;
+	target = search_node(list, data);
+
+	if(target != NULL) 
+	{
+		target -> prev -> next = target -> next;
+		if(target -> next != NULL)
+		{
+			target -> next -> prev = target -> prev;
+		}
+		free(target);
+		
+		return (SUCCESS);
+	}
+	else
+	{
+		return (ERROR);
+	}
+}
+
+result_t find(list_t *list, data_t data)
+{
+	return (FALSE);
 }
 
 result_t is_empty(list_t *list)
