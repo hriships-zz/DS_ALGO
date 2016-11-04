@@ -119,8 +119,22 @@ void _test_delete_data(list_t *list)
 	print_list(list);
 }
 
+void _test_delete_end(list_t *list)
+{
+	result_t del_result;
+	
+	del_result = delete_end(list);
+	assert(del_result == SUCCESS);
+	assert(is_at_end(list, 40) == FALSE);
+
+	del_result = delete_end(NULL);
+	assert(del_result == ERROR);
+	print_list(list);
+}
+
 void test_delete(list_t *list)
 {
 	_test_delete_begin(list);
 	_test_delete_data(list);
+	_test_delete_end(list);
 }

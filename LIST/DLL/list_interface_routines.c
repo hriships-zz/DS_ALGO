@@ -186,6 +186,28 @@ result_t delete_data(list_t *list, data_t data)
 	}
 }
 
+result_t delete_end(list_t *list)
+{
+	node_t *target;
+
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+
+	target = get_last_node(list); 
+	
+	if(target != NULL)
+	{
+		unlink_node(target);
+		return (SUCCESS);
+	}
+	else
+	{
+		return (ERROR);
+	}
+}
+
 result_t find(list_t *list, data_t data)
 {
 	return (FALSE);
