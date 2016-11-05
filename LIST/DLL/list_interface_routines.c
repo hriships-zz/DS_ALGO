@@ -236,3 +236,16 @@ void print_list(list_t *list)
 	#endif
 }
 
+result_t examine_del_beg(list_t *list, data_t *p_object)
+{
+	if(is_empty(list))
+	{
+		return (ERROR);	
+	}
+
+	node_t *head = list -> next;
+	*p_object = head -> data;
+	unlink_node(head);
+
+	return (SUCCESS);
+}

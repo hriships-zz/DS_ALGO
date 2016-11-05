@@ -22,6 +22,8 @@ int main(int args, char *arg[])
 
 	test_insert(list);
 	test_delete(list);
+ 	test_examine(list);
+	
 	exit (EXIT_SUCCESS);
 }
 
@@ -137,4 +139,16 @@ void test_delete(list_t *list)
 	_test_delete_begin(list);
 	_test_delete_data(list);
 	_test_delete_end(list);
+}
+
+void test_examine(list_t* list)
+{
+	result_t examine_result;
+	data_t data;
+
+	examine_result = examine_del_beg(list, &data);
+	assert(examine_result == SUCCESS);
+	assert(data == 30);
+	assert(is_at_begining(list, 30) == FALSE);
+	print_list(list);
 }
