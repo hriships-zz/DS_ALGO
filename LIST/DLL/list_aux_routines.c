@@ -29,7 +29,7 @@ node_t *get_last_node(list_t *list)
 {
 	node_t *run;
 
-	run = list -> next;
+	run = list;
 	while(run -> next != NULL)
 	{
 		run = run -> next;
@@ -42,7 +42,7 @@ node_t *search_node(list_t *list, data_t data)
 {
 	node_t *run;
 
-	run = list -> next;
+	run = list;
 	while(run != NULL)
 	{
 		if(run -> data == data)

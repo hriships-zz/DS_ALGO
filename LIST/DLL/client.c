@@ -141,7 +141,7 @@ void test_delete(list_t *list)
 	_test_delete_end(list);
 }
 
-void test_examine(list_t* list)
+void _test_examine_begin(list_t *list)
 {
 	result_t examine_result;
 	data_t data;
@@ -150,5 +150,31 @@ void test_examine(list_t* list)
 	assert(examine_result == SUCCESS);
 	assert(data == 30);
 	assert(is_at_begining(list, 30) == FALSE);
+
+	examine_result = examine_del_beg(list, &data);
+	assert(examine_result == ERROR);
 	print_list(list);
+}
+
+void _text_examine_end(list_t *list)
+{
+	result_t examine_result;
+	data_t data;
+
+	examine_result = examine_del_end(list, &data);
+	assert(examine_result == SUCCESS);
+	assert(data == 50);
+	assert(is_at_end(list, 50) == FALSE);
+
+	examine_result = examine_del_beg(list, &data);
+	assert(examine_result == ERROR);
+	print_list(list);
+}
+
+void test_examine(list_t* list)
+{
+	_test_examine_begin(list);
+	insert_at_end(list, 50);
+	print_list(list);
+	_text_examine_end(list);	
 }

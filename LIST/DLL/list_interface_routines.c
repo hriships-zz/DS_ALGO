@@ -54,12 +54,8 @@ result_t is_at_end(list_t *list, data_t data)
 {
 	node_t *run;
 	
-	run = list -> next;
-	while(run -> next != NULL)
-	{
-		run = run -> next;
-	}
-
+	run = get_last_node(list);
+	
 	if(run -> data == data)
 	{
 		return (TRUE);
@@ -238,12 +234,26 @@ void print_list(list_t *list)
 
 result_t examine_del_beg(list_t *list, data_t *p_object)
 {
-	if(is_empty(list))
+	if(is_empty(list) == TRUE)
 	{
 		return (ERROR);	
 	}
 
 	node_t *head = list -> next;
+	*p_object = head -> data;
+	unlink_node(head);
+
+	return (SUCCESS);
+}
+
+result_t examine_del_end(list_t *list, data_t *p_object)
+{
+	if(is_empty(list) == TRUE)
+	{
+		return (ERROR);
+	}
+
+	node_t *head = get_last_node(list);
 	*p_object = head -> data;
 	unlink_node(head);
 
