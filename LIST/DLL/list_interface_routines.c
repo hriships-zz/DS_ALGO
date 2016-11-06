@@ -286,7 +286,7 @@ result_t sort(list_t *list)
 		heap_sort(list_data, size);
 	}
 	list_t *temp = array_to_list(list_data, size);
-	list -> next = temp -> next;
+	list -> next = temp;
 	free(list_data);
 	//TO-DO : delete list
 	return (SUCCESS);

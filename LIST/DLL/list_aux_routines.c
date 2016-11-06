@@ -108,5 +108,5 @@ list_t *array_to_list(data_t *array_data, len_t size)
 		insert_at_end(list, array_data[i]);	
 	}
 
-	return list;
+	return list -> next;
 }
