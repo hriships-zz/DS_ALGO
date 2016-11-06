@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "sorting.h"
 #include "list_aux.h"
 #include "dll.h"
 
@@ -258,4 +259,55 @@ result_t examine_del_end(list_t *list, data_t *p_object)
 	unlink_node(head);
 
 	return (SUCCESS);
+}
+
+result_t sort(list_t *list)
+{
+	data_t *list_data;
+	len_t size;
+
+	size = length(list);  
+	if(size == 0)
+	{
+		return (ERROR);
+	} 
+	else if(size == 1) 
+	{
+		return (SUCCESS);
+	}
+
+	list_data = list_to_array(list, size);
+	if(size < INSERTION_SHORT_SIZE)
+	{
+		insertion_sort(list_data, size);
+	}
+	else
+	{
+		heap_sort(list_data, size);
+	}
+	list_t *temp = array_to_list(list_data, size);
+	list -> next = temp -> next;
+	free(list_data);
+	//TO-DO : delete list
+	return (SUCCESS);
+}
+
+len_t length(list_t *list)
+{
+	node_t *run;
+	len_t length;
+		
+	length = 0;
+
+	if(is_empty(list) == FALSE)
+	{
+		run = list -> next;
+		while(run != NULL)
+		{
+			length ++;
+			run = run -> next;
+		}
+	}
+
+	return (length);
 }

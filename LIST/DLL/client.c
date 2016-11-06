@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <assert.h>
+#include <limits.h>
 #include "list.h"
 #include "dll.h"
 
@@ -23,6 +24,8 @@ int main(int args, char *arg[])
 	test_insert(list);
 	test_delete(list);
  	test_examine(list);
+	test_sorting(list);
+	
 	
 	exit (EXIT_SUCCESS);
 }
@@ -177,4 +180,27 @@ void test_examine(list_t* list)
 	insert_at_end(list, 50);
 	print_list(list);
 	_text_examine_end(list);	
+}
+
+void test_sorting(list_t *list)
+{
+	int i, entries, min, max;
+	result_t sort_result;
+
+	srand(time(NULL));
+	entries = rand () % 16;
+
+	for(i=0; i < entries; i++)
+	{
+		insert_at_begin(list, rand());
+	}
+	min = 0;
+	max = INT_MAX;
+	insert_at_begin(list, max);
+	insert_at_end(list, min);
+
+	sort_result = sort(list);
+	assert(sort_result == SUCCESS);
+	assert(is_at_begining(list, min) == TRUE && is_at_end(list, max) == TRUE);
+	print_list(list);
 }

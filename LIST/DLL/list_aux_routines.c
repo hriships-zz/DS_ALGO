@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dll.h"
+#include "list_aux.h"
 
 void *xcalloc(int num_of_blocks, int block_size)
 {
@@ -75,4 +76,37 @@ void unlink_node(node_t *target)
 		target -> next -> prev = target -> prev;
 	}
 	free(target);
+}
+
+data_t *list_to_array(list_t *list, len_t size)
+{
+	data_t *array_data;
+	node_t *run;
+	int index;
+
+	array_data = (data_t*) xcalloc(size, sizeof(data_t));
+	run = list -> next;
+	index = 0;
+	
+	while(run != NULL)
+	{
+		array_data[index++] = run -> data;   // base_address_of array_data + sizeof(int) * i; 
+											 // this is how comiler calculate offset for each index i
+		run = run -> next;
+	}
+	
+	return array_data;
+}
+
+list_t *array_to_list(data_t *array_data, len_t size)
+{
+	list_t *list = (list_t*) get_node(0);
+	int i;
+
+	for(i = 0; i < size; i++)
+	{
+		insert_at_end(list, array_data[i]);	
+	}
+
+	return list;
 }
