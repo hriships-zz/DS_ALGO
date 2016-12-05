@@ -80,18 +80,17 @@ void unlink_node(node_t *target)
 
 data_t *list_to_array(list_t *list, len_t size)
 {
+	int index;
 	data_t *array_data;
 	node_t *run;
-	int index;
 
+	index = 0;
 	array_data = (data_t*) xcalloc(size, sizeof(data_t));
 	run = list -> next;
-	index = 0;
 	
 	while(run != NULL)
 	{
-		array_data[index++] = run -> data;   // base_address_of array_data + sizeof(int) * i; 
-											 // this is how comiler calculate offset for each index i
+		array_data[index++] = run -> data;   // base_address_of array_data + sizeof(int) * i; this is how compiler calculate offset for each index i
 		run = run -> next;
 	}
 	
@@ -100,13 +99,18 @@ data_t *list_to_array(list_t *list, len_t size)
 
 list_t *array_to_list(data_t *array_data, len_t size)
 {
-	list_t *list = (list_t*) get_node(0);
 	int i;
+	list_t *list;
+    node_t *run;
+
+    list = (list_t*) get_node(0);
+    run = list;
 
 	for(i = 0; i < size; i++)
 	{
-		insert_at_end(list, array_data[i]);	
-	}
+        run -> next = get_node(array_data[i]);
+	    run = run -> next;
+    }
 
 	return list -> next;
 }
